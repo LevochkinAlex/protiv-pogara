@@ -15,22 +15,24 @@ export function HeroSection() {
       </div>
       
       <div className="container relative mx-auto px-4 py-20 md:py-28">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
-          {/* Left Content */}
-          <div className="max-w-xl">
+        <div className="grid gap-12 items-start lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-x-12 lg:gap-y-8 lg:items-center">
+          {/* Left Content — min-w-0 чтобы заголовок не вылезал во вторую колонку */}
+          <div className="min-w-0 max-w-xl lg:max-w-none">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-2 text-sm text-primary-foreground">
               <Shield className="h-4 w-4" />
               <span>Лицензия МЧС • Страхование 5 млн ₽</span>
             </div>
             
-            <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl text-balance">
-              Институт национальной противопожарной безопасности
-            </h1>
-            
-            <p className="mb-8 text-lg text-background/80 leading-relaxed">
-              Более 20 лет защищаем объекты любой сложности — от школ и храмов до промышленных предприятий. 
-              Полный цикл услуг: аудит, проектирование, монтаж, обучение.
-            </p>
+            {/* w-min: ширина блока по заголовку; min-w-0 у <p> не раздувает flex по длинному слову в лиде */}
+            <div className="mb-8 flex w-min max-w-full flex-col">
+              <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+                Институт национальной противопожарной безопасности
+              </h1>
+              <p className="min-w-0 w-full text-lg text-background/80 leading-relaxed">
+                Более 20 лет защищаем объекты любой сложности — от школ и храмов до промышленных предприятий. 
+                Полный цикл услуг: аудит, проектирование, монтаж, обучение.
+              </p>
+            </div>
             
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button size="lg" variant="default" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
@@ -67,21 +69,21 @@ export function HeroSection() {
             </div>
           </div>
           
-          {/* Right Content - Stats Cards */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl bg-background/10 p-6 backdrop-blur">
+          {/* Right Content — max-width ограничивает карточки, колонка grid auto не забирает место у заголовка */}
+          <div className="grid min-w-0 w-full max-w-full grid-cols-1 gap-3 lg:max-w-[21rem] lg:gap-4 xl:max-w-xl xl:grid-cols-2 xl:gap-4 2xl:max-w-2xl">
+            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">600+</p>
               <p className="mt-2 text-background/80">Защищённых объектов по всей России</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-6 backdrop-blur">
+            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">20+</p>
               <p className="mt-2 text-background/80">Лет профессионального опыта</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-6 backdrop-blur">
+            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">100%</p>
               <p className="mt-2 text-background/80">Соответствие требованиям МЧС</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-6 backdrop-blur">
+            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">5 млн ₽</p>
               <p className="mt-2 text-background/80">Страхование ответственности</p>
             </div>

@@ -28,8 +28,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "Институт национальной противопожарной безопасности",
-  "url": "https://protiv-pogara.ru",
-  "logo": "https://protiv-pogara.ru/logo.png",
+  "url": "https://inpb.pro",
+  "logo": "https://inpb.pro/logo.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Курсовой пер., 17 стр.1, офис 13",

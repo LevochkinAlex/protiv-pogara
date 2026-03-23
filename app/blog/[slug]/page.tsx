@@ -134,8 +134,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </article>
 
-              {/* Sidebar */}
-              <aside className="space-y-6">
+              <aside className="space-y-6" aria-label="Дополнительно">
                 {/* CTA Card */}
                 <Card className="bg-primary text-primary-foreground">
                   <CardHeader>

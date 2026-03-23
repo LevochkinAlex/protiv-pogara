@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { OfficeAddressMapDialog, OFFICE_ADDRESS_LINE } from "@/components/contact/office-address-map-card"
 import { services } from "@/lib/services-data"
 import { LogoMark } from "@/components/layout/logo-mark"
 
@@ -28,6 +29,12 @@ export function Footer() {
               Более 20 лет обеспечиваем пожарную безопасность объектов любой сложности. 
               Лицензия МЧС, страхование рисков.
             </p>
+            <Link
+              href="/privacy"
+              className="text-muted-foreground hover:text-primary mb-4 inline-block text-sm transition-colors"
+            >
+              Политика конфиденциальности
+            </Link>
             <div className="flex gap-4">
               <a 
                 href="https://t.me/institut_npb" 
@@ -111,11 +118,19 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Контакты</h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">
-                  Москва, Курсовой пер., 17 стр.1, офис 13
-                </span>
+              <li>
+                <OfficeAddressMapDialog>
+                  <button
+                    type="button"
+                    aria-label={`Показать адрес на карте: ${OFFICE_ADDRESS_LINE}`}
+                    className="hover:text-primary focus-visible:ring-ring group flex w-full items-start gap-3 rounded-md p-0 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                  >
+                    <MapPin className="text-primary mt-0.5 h-5 w-5 shrink-0" />
+                    <span className="text-muted-foreground group-hover:text-primary text-sm">
+                      {OFFICE_ADDRESS_LINE}
+                    </span>
+                  </button>
+                </OfficeAddressMapDialog>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />
@@ -146,16 +161,9 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 border-t border-border pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} ООО «Институт НПБ». Все права защищены.
-            </p>
-            <div className="flex items-center gap-4">
-              <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-                Политика конфиденциальности
-              </Link>
-            </div>
-          </div>
+          <p className="text-muted-foreground text-center text-sm md:text-left">
+            © {new Date().getFullYear()} ООО «Институт НПБ». Все права защищены.
+          </p>
         </div>
       </div>
     </footer>

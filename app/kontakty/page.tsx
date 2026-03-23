@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { FeedbackForm } from '@/components/forms/feedback-form'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { OfficeAddressMapCard } from '@/components/contact/office-address-map-card'
+import { Phone, Mail, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Контакты | Форма обратной связи',
@@ -37,17 +38,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-bold mb-8">Реквизиты</h2>
                 
                 <div className="space-y-6">
-                  <div className="bg-card p-6 rounded-lg border border-border">
-                    <div className="flex gap-4">
-                      <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-semibold mb-2">Адрес</h3>
-                        <p className="text-muted-foreground">
-                          Москва, Курсовой пер., 17 стр.1, офис 13
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <OfficeAddressMapCard />
 
                   <div className="bg-card p-6 rounded-lg border border-border">
                     <div className="flex gap-4">

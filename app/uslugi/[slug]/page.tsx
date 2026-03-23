@@ -147,7 +147,6 @@ export default async function ServicePage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Sidebar */}
               <div className="space-y-6">
                 {/* Contact Form Card */}
                 <Card className="sticky top-24">
