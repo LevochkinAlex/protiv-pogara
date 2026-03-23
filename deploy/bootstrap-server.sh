@@ -33,8 +33,9 @@ if [[ ! -f "${APP_ROOT}/.next/standalone/server.js" ]]; then
   exit 1
 fi
 
-APP_USER="${APP_USER:-$(stat -f '%Su' "${APP_ROOT}" 2>/dev/null || stat -c '%U' "${APP_ROOT}")}"
-APP_GROUP="${APP_GROUP:-$(stat -f '%Sg' "${APP_ROOT}" 2>/dev/null || stat -c '%G' "${APP_ROOT}")}"
+# GNU stat: -f — это «файловая система», не владелец; на Linux ls -ld надёжнее
+APP_USER="${APP_USER:-$(ls -ld "${APP_ROOT}" | awk '{print $3}')}"
+APP_GROUP="${APP_GROUP:-$(ls -ld "${APP_ROOT}" | awk '{print $4}')}"
 NODE_BIN="${NODE_BIN:-}"
 if [[ -z "${NODE_BIN}" ]]; then
   NODE_BIN="$(command -v node 2>/dev/null || true)"
