@@ -3,8 +3,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-npm ci --omit=dev
+# Полная установка: Tailwind/PostCSS в devDependencies, но нужны на этапе next build
+npm ci
 npm run build
+npm prune --omit=dev
 
 STANDALONE=".next/standalone"
 mkdir -p "${STANDALONE}/.next"
