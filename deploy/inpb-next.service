@@ -1,0 +1,20 @@
+[Unit]
+Description=Next.js site inpb.pro (standalone, port 3232, localhost only)
+After=network.target
+
+[Service]
+Type=simple
+User=__APP_USER__
+Group=__APP_GROUP__
+WorkingDirectory=__APP_ROOT__/.next/standalone
+Environment=NODE_ENV=production
+Environment=PORT=3232
+Environment=HOSTNAME=127.0.0.1
+ExecStart=__NODE_BIN__ server.js
+Restart=on-failure
+RestartSec=5
+# Ограничения (не мешают другим сервисам)
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
