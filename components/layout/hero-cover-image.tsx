@@ -27,8 +27,10 @@ export function HeroCoverImage({
         fill
         className="object-cover"
         style={{ objectPosition }}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1400px"
         priority={priority}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'low'}
       />
     </div>
   )

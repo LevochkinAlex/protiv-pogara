@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Onest } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { ChatbotWidget } from '@/components/chat/chatbot-widget'
+import { DeferredClientWidgets } from '@/components/layout/deferred-client-widgets'
 import './globals.css'
 
-const onest = Onest({ 
-  subsets: ["latin", "cyrillic"],
+const onest = Onest({
+  subsets: ['latin', 'cyrillic'],
   variable: '--font-onest',
+  display: 'swap',
+  adjustFontFallback: true,
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://inpb.pro'
@@ -113,9 +114,9 @@ export default function RootLayout({
       <body className={`${onest.variable} font-sans antialiased`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-X7KH81HKWN"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -123,7 +124,7 @@ export default function RootLayout({
             gtag('config', 'G-X7KH81HKWN');
           `}
         </Script>
-        <Script id="yandex-metrika" strategy="afterInteractive">
+        <Script id="yandex-metrika" strategy="lazyOnload">
           {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(108217653,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});`}
         </Script>
         <noscript>
@@ -132,8 +133,7 @@ export default function RootLayout({
           </div>
         </noscript>
         {children}
-        <ChatbotWidget />
-        <Analytics />
+        <DeferredClientWidgets />
       </body>
     </html>
   )
