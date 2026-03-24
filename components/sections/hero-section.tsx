@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-foreground text-background">
       <HeroCoverImage
-        src="/images/hero-bg.png"
+        src="/images/hero-bg.webp"
         alt="Пожарная безопасность и защита объектов — Институт НПБ, Москва"
         objectPosition="50% 28%"
         priority

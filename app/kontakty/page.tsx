@@ -20,7 +20,7 @@ export default function ContactPage() {
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-12 text-background md:py-16">
           <HeroCoverImage
-            src="/images/kontakty-hero.png"
+            src="/images/kontakty-hero.webp"
             alt="Контакты Института НПБ — офис и связь в Москве"
             objectPosition="center bottom"
           />

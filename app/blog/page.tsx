@@ -28,7 +28,7 @@ export default function BlogPage() {
         {/* Hero — фон + затемнение 65%, светлый текст */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
           <HeroCoverImage
-            src="/images/blog-hero.png"
+            src="/images/blog-hero.webp"
             alt="Блог о пожарной безопасности — статьи и рекомендации Института НПБ"
             objectPosition="center bottom"
           />

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:prod": "next start -H 127.0.0.1 -p 3232"
+    "start:prod": "next start -H 127.0.0.1 -p 3232",
+    "optimize:images": "node scripts/optimize-public-images.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.12",

@@ -49,7 +49,7 @@ export default function ServicesPage() {
         {/* Hero — фон + затемнение 65%, светлый текст */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
           <HeroCoverImage
-            src="/images/uslugi-hero.png"
+            src="/images/uslugi-hero.webp"
             alt="Услуги пожарной безопасности — каталог Института НПБ"
             objectPosition="center bottom"
           />

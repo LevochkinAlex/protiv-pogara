@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Hero — фон + затемнение 65%, якорь по центру кадра */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
           <HeroCoverImage
-            src="/images/blog-slug-hero.png"
+            src="/images/blog-slug-hero.webp"
             alt={`Иллюстрация к статье: ${post.title}`}
             objectPosition="50% 28%"
           />

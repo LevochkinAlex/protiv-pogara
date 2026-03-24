@@ -40,7 +40,7 @@ export default function AboutPage() {
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-12 text-background md:py-16">
           <HeroCoverImage
-            src="/images/about-hero.png"
+            src="/images/about-hero.webp"
             alt="О компании Институт НПБ — команда и экспертиза в пожарной безопасности"
             objectPosition="center bottom"
           />

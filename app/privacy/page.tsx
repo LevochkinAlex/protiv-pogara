@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
           <HeroCoverImage
-            src="/images/privacy-hero.png"
+            src="/images/privacy-hero.webp"
             alt="Политика конфиденциальности — защита персональных данных"
             objectPosition="50% 28%"
           />

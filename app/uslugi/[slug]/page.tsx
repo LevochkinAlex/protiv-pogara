@@ -56,7 +56,7 @@ export default async function ServicePage({ params }: PageProps) {
         {/* Hero — фон + затемнение 65% */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
           <HeroCoverImage
-            src="/images/uslugi-slug-hero.png"
+            src="/images/uslugi-slug-hero.webp"
             alt={`Услуга: ${service.title} — Институт НПБ`}
             objectPosition="50% 28%"
           />

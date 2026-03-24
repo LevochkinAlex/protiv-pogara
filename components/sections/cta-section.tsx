@@ -7,7 +7,7 @@ export function CTASection() {
   return (
     <section className="relative overflow-hidden bg-foreground py-20 text-background">
       <HeroCoverImage
-        src="/images/cta-hero.png"
+        src="/images/cta-hero.webp"
         alt="Консультация по противопожарной защите зданий — фоновая иллюстрация"
         objectPosition="50% 28%"
       />
