@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User } from "lucide-react"
 import { blogPosts } from "@/lib/blog-data"
+import { formatDateRu } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Блог",
@@ -22,9 +23,18 @@ export default function BlogPage() {
     <>
       <Header />
       <main>
-        {/* Hero */}
-        <section className="bg-foreground text-background py-16">
-          <div className="container mx-auto px-4">
+        {/* Hero — фон + затемнение 65%, светлый текст */}
+        <section className="relative overflow-hidden bg-foreground py-16 text-background">
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+            style={{ backgroundImage: "url(/images/blog-hero.png)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-black/65"
+            aria-hidden
+          />
+          <div className="container relative z-10 mx-auto px-4">
             <nav className="mb-4 text-sm text-background/60">
               <Link href="/" className="hover:text-background">Главная</Link>
               <span className="mx-2">/</span>
@@ -65,7 +75,7 @@ export default function BlogPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          <span>{new Date(post.publishedAt).toLocaleDateString('ru-RU')}</span>
+                          <span>{formatDateRu(post.publishedAt)}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-4 w-4" />

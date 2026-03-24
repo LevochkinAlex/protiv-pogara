@@ -12,8 +12,17 @@ export default function PrivacyPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <section className="bg-foreground text-background py-16">
-          <div className="container mx-auto px-4">
+        <section className="relative overflow-hidden bg-foreground py-16 text-background">
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
+            style={{ backgroundImage: "url(/images/privacy-hero.png)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-black/65"
+            aria-hidden
+          />
+          <div className="container relative z-10 mx-auto px-4">
             <h1 className="text-4xl font-bold md:text-5xl">
               Политика конфиденциальности
             </h1>

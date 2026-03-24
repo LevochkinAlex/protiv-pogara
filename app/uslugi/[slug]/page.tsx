@@ -50,9 +50,18 @@ export default async function ServicePage({ params }: PageProps) {
     <>
       <Header />
       <main>
-        {/* Hero */}
-        <section className="bg-foreground text-background py-16">
-          <div className="container mx-auto px-4">
+        {/* Hero — фон + затемнение 65% */}
+        <section className="relative overflow-hidden bg-foreground py-16 text-background">
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
+            style={{ backgroundImage: "url(/images/uslugi-slug-hero.png)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-black/65"
+            aria-hidden
+          />
+          <div className="container relative z-10 mx-auto px-4">
             <nav className="mb-4 text-sm text-background/60">
               <Link href="/" className="hover:text-background">Главная</Link>
               <span className="mx-2">/</span>

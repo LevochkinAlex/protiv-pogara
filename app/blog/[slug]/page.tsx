@@ -5,8 +5,9 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User, ArrowLeft, ArrowRight } from "lucide-react"
-import { blogPosts, getBlogPostBySlug, getAllBlogSlugs, getRecentPosts } from "@/lib/blog-data"
+import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
+import { getBlogPostBySlug, getAllBlogSlugs, getRecentPosts } from "@/lib/blog-data"
+import { formatDateRu } from "@/lib/utils"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -38,18 +39,24 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound()
   }
 
-  // Get related posts (excluding current)
-  const relatedPosts = blogPosts
-    .filter(p => p.id !== post.id)
-    .slice(0, 3)
+  const relatedPosts = getRecentPosts(8).filter((p) => p.slug !== post.slug).slice(0, 3)
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero */}
-        <section className="bg-foreground text-background py-16">
-          <div className="container mx-auto px-4">
+        {/* Hero — фон + затемнение 65%, якорь по центру кадра */}
+        <section className="relative overflow-hidden bg-foreground py-16 text-background">
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
+            style={{ backgroundImage: "url(/images/blog-slug-hero.png)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-black/65"
+            aria-hidden
+          />
+          <div className="container relative z-10 mx-auto px-4">
             <nav className="mb-4 text-sm text-background/60">
               <Link href="/" className="hover:text-background">Главная</Link>
               <span className="mx-2">/</span>
@@ -71,11 +78,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
-                <span>{new Date(post.publishedAt).toLocaleDateString('ru-RU', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</span>
+                <span>{formatDateRu(post.publishedAt, 'long')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-5 w-5" />
@@ -169,7 +172,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                           {related.title}
                         </p>
                         <p className="text-sm text-muted-foreground mt-1">
-                          {new Date(related.publishedAt).toLocaleDateString('ru-RU')}
+                          {formatDateRu(related.publishedAt)}
                         </p>
                       </Link>
                     ))}

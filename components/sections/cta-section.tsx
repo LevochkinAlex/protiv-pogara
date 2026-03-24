@@ -4,8 +4,17 @@ import { Phone, MessageCircle } from "lucide-react"
 
 export function CTASection() {
   return (
-    <section className="py-20 bg-foreground text-background">
-      <div className="container mx-auto px-4">
+    <section className="relative overflow-hidden bg-foreground py-20 text-background">
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
+        style={{ backgroundImage: "url(/images/cta-hero.png)" }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-black/65"
+        aria-hidden
+      />
+      <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Готовы обеспечить безопасность вашего объекта?

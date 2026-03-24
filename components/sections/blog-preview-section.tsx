@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import { getRecentPosts } from "@/lib/blog-data"
+import { formatDateRu } from "@/lib/utils"
 
 export function BlogPreviewSection() {
   const recentPosts = getRecentPosts(3)
@@ -47,7 +48,7 @@ export function BlogPreviewSection() {
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
-                      <span>{new Date(post.publishedAt).toLocaleDateString('ru-RU')}</span>
+                      <span>{formatDateRu(post.publishedAt)}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="h-4 w-4" />

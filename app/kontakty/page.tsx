@@ -15,11 +15,20 @@ export default function ContactPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Контакты</h1>
-              <p className="text-lg text-muted-foreground text-balance">
+        <section className="relative overflow-hidden bg-foreground py-12 text-background md:py-16">
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+            style={{ backgroundImage: "url(/images/kontakty-hero.png)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-black/65"
+            aria-hidden
+          />
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mb-12 text-center">
+              <h1 className="mb-4 text-balance text-4xl font-bold md:text-5xl">Контакты</h1>
+              <p className="text-balance text-lg text-background/80">
                 Свяжитесь с нами любым удобным способом
               </p>
             </div>
