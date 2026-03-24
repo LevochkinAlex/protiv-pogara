@@ -7,8 +7,8 @@ import { OfficeAddressMapCard } from '@/components/contact/office-address-map-ca
 import { Phone, Mail, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Контакты | Форма обратной связи',
-  description: 'Свяжитесь с Институтом НПБ. Форма обратной связи, телефоны, адрес офиса в Москве.',
+  title: 'Контакты — заказать услуги пожарной безопасности в Москве',
+  description: 'Свяжитесь с Институтом НПБ: телефон, email, адрес офиса в Москве. Закажите аудит, монтаж пожарной сигнализации, огнезащиту, обучение ПТМ, подготовку к проверке МЧС.',
 }
 
 export default function ContactPage() {

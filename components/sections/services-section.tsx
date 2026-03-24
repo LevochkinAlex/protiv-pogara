@@ -10,6 +10,7 @@ import {
   Award, 
   GraduationCap, 
   Lightbulb,
+  FileLock,
   ArrowRight
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -27,6 +28,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "award": <Award className="h-6 w-6" />,
   "graduation-cap": <GraduationCap className="h-6 w-6" />,
   "lightbulb": <Lightbulb className="h-6 w-6" />,
+  "file-lock": <FileLock className="h-6 w-6" />,
 }
 
 export function ServicesSection() {

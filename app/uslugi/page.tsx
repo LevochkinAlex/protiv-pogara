@@ -15,13 +15,14 @@ import {
   Award, 
   GraduationCap, 
   Lightbulb,
+  FileLock,
   ArrowRight
 } from "lucide-react"
 import { services } from "@/lib/services-data"
 
 export const metadata: Metadata = {
-  title: "Услуги",
-  description: "Полный спектр услуг в области пожарной безопасности: аудит, проектирование, монтаж систем, огнезащита, обучение персонала. Институт НПБ, Москва."
+  title: "Услуги пожарной безопасности под ключ — Москва и МО",
+  description: "Полный спектр противопожарных услуг в Москве: аудит, монтаж сигнализации, расчёт рисков, огнезащита, обучение ПТМ, паспорт безопасности, декларация ПБ, сопровождение проверок МЧС."
 }
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -35,6 +36,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "award": <Award className="h-8 w-8" />,
   "graduation-cap": <GraduationCap className="h-8 w-8" />,
   "lightbulb": <Lightbulb className="h-8 w-8" />,
+  "file-lock": <FileLock className="h-8 w-8" />,
 }
 
 export default function ServicesPage() {
