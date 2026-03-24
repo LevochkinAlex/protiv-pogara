@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { X, MessageCircle, Send, Bot, User } from 'lucide-react'
+import Link from 'next/link'
+import { X, MessageCircle, Send, Bot, User, FileText } from 'lucide-react'
 
 interface Message {
   id: string
@@ -159,6 +160,17 @@ export function ChatbotWidget() {
               </div>
             )}
             <div ref={messagesEndRef} />
+          </div>
+
+          {/* Оставить заявку — ведёт на форму, которая отправляется через SMTP */}
+          <div className="border-t border-border px-4 py-2 bg-muted/20">
+            <Link
+              href="/kontakty?source=chat"
+              className="flex items-center justify-center gap-2 py-2 text-sm text-primary hover:underline"
+            >
+              <FileText className="h-4 w-4" />
+              Оставить заявку
+            </Link>
           </div>
 
           {/* Input */}

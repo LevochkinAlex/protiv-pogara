@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendFeedbackEmail } from '@/lib/email'
 
 interface FeedbackData {
   name: string
@@ -6,6 +7,7 @@ interface FeedbackData {
   phone?: string
   company?: string
   message: string
+  source?: string
 }
 
 async function sendTelegramNotification(data: FeedbackData) {
@@ -84,23 +86,31 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Отправляем уведомление в Telegram
-    const telegramResult = await sendTelegramNotification({
+    const feedbackData = {
       name: body.name.trim(),
       email: body.email.trim(),
       phone: body.phone?.trim(),
       company: body.company?.trim(),
       message: body.message.trim(),
-    })
+      source: body.source?.trim(),
+    }
 
-    // Логируем заявку в консоль (для отладки и если Telegram не настроен)
+    // Отправляем уведомление в Telegram
+    const telegramResult = await sendTelegramNotification(feedbackData)
+
+    // Отправляем на email через SMTP
+    const emailResult = await sendFeedbackEmail(feedbackData)
+
+    // Логируем заявку (для отладки)
     console.log('New feedback received:', {
-      name: body.name,
-      email: body.email,
-      phone: body.phone,
-      company: body.company,
-      message: body.message.substring(0, 100),
+      name: feedbackData.name,
+      email: feedbackData.email,
+      phone: feedbackData.phone,
+      company: feedbackData.company,
+      message: feedbackData.message.substring(0, 100),
+      source: feedbackData.source,
       telegramSent: telegramResult.sent,
+      emailSent: emailResult.sent,
     })
 
     return NextResponse.json({ 

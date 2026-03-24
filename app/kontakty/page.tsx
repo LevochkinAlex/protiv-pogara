@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { FeedbackForm } from '@/components/forms/feedback-form'
@@ -40,7 +41,9 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               <div>
                 <h2 className="text-3xl font-bold mb-8">Форма обратной связи</h2>
-                <FeedbackForm />
+                <Suspense fallback={<div className="h-64 animate-pulse rounded-xl bg-muted" />}>
+                  <FeedbackForm source="kontakty" />
+                </Suspense>
               </div>
 
               <div>

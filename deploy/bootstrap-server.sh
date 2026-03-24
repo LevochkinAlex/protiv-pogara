@@ -6,8 +6,9 @@
 #   1) DNS: A (и при необходимости AAAA) для inpb.pro [и www] → IP этого сервера
 #   2) Клон репозитория, например: sudo mkdir -p /srv && sudo chown $USER /srv
 #      git clone … /srv/inpb && cd /srv/inpb
-#   3) Файл окружения: cp .env.example .env.local && nano .env.local
-#      обязательно NEXT_PUBLIC_APP_URL=https://inpb.pro
+#   3) Файл окружения: cp deploy/env.production.example .env && nano .env
+#      (или cp .env.example .env.local для локальной разработки)
+#      обязательно: NEXT_PUBLIC_APP_URL=https://inpb.pro, SMTP_* для заявок на email
 #   4) Сборка: bash deploy/build-standalone.sh
 #
 # Переменные окружения (опционально):

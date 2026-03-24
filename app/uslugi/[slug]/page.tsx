@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { Suspense } from "react"
 import { notFound } from "next/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -166,7 +167,9 @@ export default async function ServicePage({ params }: PageProps) {
                     </p>
                   </CardHeader>
                   <CardContent>
-                    <FeedbackForm />
+                    <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-muted" />}>
+                      <FeedbackForm source={`uslugi/${service.slug}`} />
+                    </Suspense>
                   </CardContent>
                 </Card>
               </div>

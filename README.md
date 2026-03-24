@@ -59,16 +59,20 @@
 # Обязательные для чат-бота
 OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-# Для отправки email на Gmail (используйте App Password вместо обычного пароля)
-SMTP_EMAIL=your-email@gmail.com
-SMTP_PASSWORD=your-app-password
+# SMTP Mail.ru — для отправки заявок на email
+SMTP_HOST=smtp.mail.ru
+SMTP_PORT=465
+SMTP_USER=alipov@inpb.pro
+SMTP_PASS=ваш-пароль
+MAIL_FROM=alipov@inpb.pro
+MAIL_TO=alipov@inpb.pro
 
 # Опционально: для отправки в Telegram
 TELEGRAM_BOT_TOKEN=your-bot-token
 TELEGRAM_CHAT_ID=your-chat-id
 
 # Для production
-NEXT_PUBLIC_APP_URL=https://yourdomain.com
+NEXT_PUBLIC_APP_URL=https://inpb.pro
 ```
 
 ### Получение API ключей
@@ -79,10 +83,9 @@ NEXT_PUBLIC_APP_URL=https://yourdomain.com
 3. Откройте Settings → API Keys
 4. Скопируйте ваш API key
 
-**Gmail SMTP:**
-1. Включите 2FA на аккаунте Google
-2. Создайте App Password: https://myaccount.google.com/apppasswords
-3. Используйте этот пароль в переменной SMTP_PASSWORD
+**SMTP Mail.ru:**
+1. Используйте пароль от почты alipov@inpb.pro (или App Password, если включена 2FA)
+2. Укажите в SMTP_PASS
 
 **Telegram Bot (опционально):**
 1. Напишите @BotFather в Telegram

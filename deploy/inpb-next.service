@@ -10,6 +10,8 @@ WorkingDirectory=__APP_ROOT__/.next/standalone
 Environment=NODE_ENV=production
 Environment=PORT=3232
 Environment=HOSTNAME=127.0.0.1
+# Загрузить SMTP, Telegram и др. из .env (создать: cp deploy/env.production.example .env)
+EnvironmentFile=-__APP_ROOT__/.env
 ExecStart=__NODE_BIN__ server.js
 Restart=on-failure
 RestartSec=5

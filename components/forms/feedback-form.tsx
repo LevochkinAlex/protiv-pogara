@@ -1,13 +1,21 @@
 'use client'
 
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
-export function FeedbackForm() {
+interface FeedbackFormProps {
+  /** Источник заявки: uslugi/audit, kontakty, chat и т.д. */
+  source?: string
+}
+
+export function FeedbackForm({ source: sourceProp }: FeedbackFormProps) {
+  const searchParams = useSearchParams()
+  const source = searchParams.get('source') || sourceProp
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +42,7 @@ export function FeedbackForm() {
       const response = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ...(source && { source }) }),
       })
 
       const data = await response.json()

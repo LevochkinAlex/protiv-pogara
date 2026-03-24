@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { FeedbackForm } from '@/components/forms/feedback-form'
@@ -26,7 +27,9 @@ export default function FeedbackPage() {
 
         <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <FeedbackForm />
+            <Suspense fallback={<div className="h-64 animate-pulse rounded-xl bg-muted" />}>
+              <FeedbackForm source="feedback" />
+            </Suspense>
           </div>
         </section>
       </main>
