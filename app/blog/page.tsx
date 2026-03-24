@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User } from "lucide-react"
@@ -10,7 +11,8 @@ import { formatDateRu } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Блог — статьи о пожарной безопасности, проверках МЧС, нормативах",
-  description: "Экспертные статьи о пожарной безопасности в Москве: изменения законодательства, подготовка к проверке МЧС, выбор систем пожаротушения, штрафы за нарушения. Институт НПБ."
+  description: "Экспертные статьи о пожарной безопасности в Москве: изменения законодательства, подготовка к проверке МЧС, выбор систем пожаротушения, штрафы за нарушения. Институт НПБ.",
+  alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {
@@ -25,10 +27,10 @@ export default function BlogPage() {
       <main>
         {/* Hero — фон + затемнение 65%, светлый текст */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url(/images/blog-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/blog-hero.png"
+            alt="Блог о пожарной безопасности — статьи и рекомендации Института НПБ"
+            objectPosition="center bottom"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

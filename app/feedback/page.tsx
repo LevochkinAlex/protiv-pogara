@@ -7,6 +7,7 @@ import { FeedbackForm } from '@/components/forms/feedback-form'
 export const metadata: Metadata = {
   title: 'Форма обратной связи',
   description: 'Свяжитесь с нами через форму обратной связи. Мы ответим на ваши вопросы в ближайшее время.',
+  alternates: { canonical: '/feedback' },
 }
 
 export default function FeedbackPage() {

@@ -1,11 +1,13 @@
 import { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { HeroCoverImage } from '@/components/layout/hero-cover-image'
 import { Award, Users, Clock, Target } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'О компании — эксперты по пожарной безопасности в Москве',
   description: 'Институт НПБ — команда экспертов МЧС с 20-летним опытом. Пожарная безопасность под ключ, аутсорсинг пожарной безопасности, ведение ПБ организации в Москве.',
+  alternates: { canonical: '/about' },
 }
 
 export default function AboutPage() {
@@ -37,10 +39,10 @@ export default function AboutPage() {
       <Header />
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-12 text-background md:py-16">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url(/images/about-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/about-hero.png"
+            alt="О компании Институт НПБ — команда и экспертиза в пожарной безопасности"
+            objectPosition="center bottom"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

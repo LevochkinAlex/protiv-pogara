@@ -2,15 +2,17 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 import { Shield, Phone, CheckCircle } from "lucide-react"
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-foreground text-background">
-      <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
-        style={{ backgroundImage: "url(/images/hero-bg.png)" }}
-        aria-hidden
+      <HeroCoverImage
+        src="/images/hero-bg.png"
+        alt="Пожарная безопасность и защита объектов — Институт НПБ, Москва"
+        objectPosition="50% 28%"
+        priority
       />
       <div
         className="pointer-events-none absolute inset-0 bg-black/65"

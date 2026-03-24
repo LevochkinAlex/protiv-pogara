@@ -1,10 +1,12 @@
 import { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { HeroCoverImage } from '@/components/layout/hero-cover-image'
 
 export const metadata: Metadata = {
   title: 'Политика конфиденциальности',
   description: 'Политика конфиденциальности и обработки персональных данных ООО «Институт НПБ».',
+  alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {
@@ -13,10 +15,10 @@ export default function PrivacyPage() {
       <Header />
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
-            style={{ backgroundImage: "url(/images/privacy-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/privacy-hero.png"
+            alt="Политика конфиденциальности — защита персональных данных"
+            objectPosition="50% 28%"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

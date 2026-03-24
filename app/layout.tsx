@@ -128,7 +128,7 @@ export default function RootLayout({
         </Script>
         <noscript>
           <div>
-            <img src="https://mc.yandex.ru/watch/108217653" style={{ position: 'absolute', left: '-9999px' }} alt="" />
+            <img src="https://mc.yandex.ru/watch/108217653" style={{ position: 'absolute', left: '-9999px' }} alt="Яндекс.Метрика" width={1} height={1} />
           </div>
         </noscript>
         {children}

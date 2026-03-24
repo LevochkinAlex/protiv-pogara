@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { HeroCoverImage } from '@/components/layout/hero-cover-image'
 import { FeedbackForm } from '@/components/forms/feedback-form'
 import { OfficeAddressMapCard } from '@/components/contact/office-address-map-card'
 import { Phone, Mail, Clock } from 'lucide-react'
@@ -9,6 +10,7 @@ import { Phone, Mail, Clock } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Контакты — заказать услуги пожарной безопасности в Москве',
   description: 'Свяжитесь с Институтом НПБ: телефон, email, адрес офиса в Москве. Закажите аудит, монтаж пожарной сигнализации, огнезащиту, обучение ПТМ, подготовку к проверке МЧС.',
+  alternates: { canonical: '/kontakty' },
 }
 
 export default function ContactPage() {
@@ -17,10 +19,10 @@ export default function ContactPage() {
       <Header />
       <main className="flex-1">
         <section className="relative overflow-hidden bg-foreground py-12 text-background md:py-16">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url(/images/kontakty-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/kontakty-hero.png"
+            alt="Контакты Института НПБ — офис и связь в Москве"
+            objectPosition="center bottom"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

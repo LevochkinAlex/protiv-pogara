@@ -1,14 +1,15 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 import { Phone, MessageCircle } from "lucide-react"
 
 export function CTASection() {
   return (
     <section className="relative overflow-hidden bg-foreground py-20 text-background">
-      <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
-        style={{ backgroundImage: "url(/images/cta-hero.png)" }}
-        aria-hidden
+      <HeroCoverImage
+        src="/images/cta-hero.png"
+        alt="Консультация по противопожарной защите зданий — фоновая иллюстрация"
+        objectPosition="50% 28%"
       />
       <div
         className="pointer-events-none absolute inset-0 bg-black/65"

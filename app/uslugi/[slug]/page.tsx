@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Check, Phone, ArrowRight } from "lucide-react"
 import { services, getServiceBySlug, getAllServiceSlugs } from "@/lib/services-data"
 import { FeedbackForm } from "@/components/forms/feedback-form"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: service.metaTitle,
     description: service.metaDescription,
+    alternates: { canonical: `/uslugi/${slug}` },
   }
 }
 
@@ -53,10 +55,10 @@ export default async function ServicePage({ params }: PageProps) {
       <main>
         {/* Hero — фон + затемнение 65% */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
-            style={{ backgroundImage: "url(/images/uslugi-slug-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/uslugi-slug-hero.png"
+            alt={`Услуга: ${service.title} — Институт НПБ`}
+            objectPosition="50% 28%"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

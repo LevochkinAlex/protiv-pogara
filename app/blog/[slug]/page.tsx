@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import { getBlogPostBySlug, getAllBlogSlugs, getRecentPosts } from "@/lib/blog-data"
 import { formatDateRu } from "@/lib/utils"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.metaTitle,
     description: post.metaDescription,
+    alternates: { canonical: `/blog/${slug}` },
   }
 }
 
@@ -47,10 +49,10 @@ export default async function BlogPostPage({ params }: PageProps) {
       <main>
         {/* Hero — фон + затемнение 65%, якорь по центру кадра */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-[50%_28%] bg-no-repeat"
-            style={{ backgroundImage: "url(/images/blog-slug-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/blog-slug-hero.png"
+            alt={`Иллюстрация к статье: ${post.title}`}
+            objectPosition="50% 28%"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"

@@ -18,11 +18,13 @@ import {
   FileLock,
   ArrowRight
 } from "lucide-react"
+import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 import { services } from "@/lib/services-data"
 
 export const metadata: Metadata = {
   title: "Услуги пожарной безопасности под ключ — Москва и МО",
-  description: "Полный спектр противопожарных услуг в Москве: аудит, монтаж сигнализации, расчёт рисков, огнезащита, обучение ПТМ, паспорт безопасности, декларация ПБ, сопровождение проверок МЧС."
+  description: "Полный спектр противопожарных услуг в Москве: аудит, монтаж сигнализации, расчёт рисков, огнезащита, обучение ПТМ, паспорт безопасности, декларация ПБ, сопровождение проверок МЧС.",
+  alternates: { canonical: '/uslugi' },
 }
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -46,10 +48,10 @@ export default function ServicesPage() {
       <main>
         {/* Hero — фон + затемнение 65%, светлый текст */}
         <section className="relative overflow-hidden bg-foreground py-16 text-background">
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url(/images/uslugi-hero.png)" }}
-            aria-hidden
+          <HeroCoverImage
+            src="/images/uslugi-hero.png"
+            alt="Услуги пожарной безопасности — каталог Института НПБ"
+            objectPosition="center bottom"
           />
           <div
             className="pointer-events-none absolute inset-0 bg-black/65"
