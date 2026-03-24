@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Контакты — заказать услуги пожарной безопасности в Москве',
   description: 'Свяжитесь с Институтом НПБ: телефон, email, адрес офиса в Москве. Закажите аудит, монтаж пожарной сигнализации, огнезащиту, обучение ПТМ, подготовку к проверке МЧС.',
   alternates: { canonical: '/kontakty' },
+  openGraph: { url: '/kontakty' },
 }
 
 export default function ContactPage() {

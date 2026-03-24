@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Блог — статьи о пожарной безопасности, проверках МЧС, нормативах",
   description: "Экспертные статьи о пожарной безопасности в Москве: изменения законодательства, подготовка к проверке МЧС, выбор систем пожаротушения, штрафы за нарушения. Институт НПБ.",
   alternates: { canonical: '/blog' },
+  openGraph: { url: '/blog' },
 }
 
 export default function BlogPage() {

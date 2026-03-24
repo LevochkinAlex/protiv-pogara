@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/sections/hero-section"
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
+  openGraph: { url: '/' },
 }
 import { ServicesSection } from "@/components/sections/services-section"
 import { AdvantagesSection } from "@/components/sections/advantages-section"

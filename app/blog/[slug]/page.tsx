@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: post.metaTitle,
     description: post.metaDescription,
     alternates: { canonical: `/blog/${slug}` },
+    openGraph: { url: `/blog/${slug}` },
   }
 }
 

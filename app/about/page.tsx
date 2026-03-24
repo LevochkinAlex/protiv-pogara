@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'О компании — эксперты по пожарной безопасности в Москве',
   description: 'Институт НПБ — команда экспертов МЧС с 20-летним опытом. Пожарная безопасность под ключ, аутсорсинг пожарной безопасности, ведение ПБ организации в Москве.',
   alternates: { canonical: '/about' },
+  openGraph: { url: '/about' },
 }
 
 export default function AboutPage() {

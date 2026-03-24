@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   title: "Услуги пожарной безопасности под ключ — Москва и МО",
   description: "Полный спектр противопожарных услуг в Москве: аудит, монтаж сигнализации, расчёт рисков, огнезащита, обучение ПТМ, паспорт безопасности, декларация ПБ, сопровождение проверок МЧС.",
   alternates: { canonical: '/uslugi' },
+  openGraph: { url: '/uslugi' },
 }
 
 const iconMap: Record<string, React.ReactNode> = {

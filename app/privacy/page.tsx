@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Политика конфиденциальности',
   description: 'Политика конфиденциальности и обработки персональных данных ООО «Институт НПБ».',
   alternates: { canonical: '/privacy' },
+  openGraph: { url: '/privacy' },
 }
 
 export default function PrivacyPage() {
