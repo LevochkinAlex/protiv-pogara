@@ -46,10 +46,10 @@ export async function POST(request: Request) {
       apiKey.includes('your-api-key') ||
       apiKey.includes('xxxxxxxx')
 
-    // Llama 3.1 8B free снята с OpenRouter — см. актуальные :free модели на openrouter.ai
+    // :free модели часто только у Venice; при отключённом Venice в настройках OpenRouter — 404.
+    // openrouter/auto подбирает доступную дешёвую модель (часто Cloudflare и т.п.).
     const model =
-      process.env.OPENROUTER_CHAT_MODEL ||
-      'meta-llama/llama-3.2-3b-instruct:free'
+      process.env.OPENROUTER_CHAT_MODEL || 'openrouter/auto'
 
     if (isPlaceholderKey) {
       // Fallback ответы без AI
