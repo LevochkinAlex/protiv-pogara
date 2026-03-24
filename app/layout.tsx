@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Onest } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ChatbotWidget } from '@/components/chat/chatbot-widget'
@@ -62,6 +63,18 @@ export default function RootLayout({
         />
       </head>
       <body className={`${onest.variable} font-sans antialiased`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-X7KH81HKWN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X7KH81HKWN');
+          `}
+        </Script>
         {children}
         <ChatbotWidget />
         <Analytics />
