@@ -41,8 +41,17 @@ export async function POST(request: Request) {
     const { messages } = await request.json() as { messages: ChatMessage[] }
 
     const apiKey = process.env.OPENROUTER_API_KEY
+    const isPlaceholderKey =
+      !apiKey ||
+      apiKey.includes('your-api-key') ||
+      apiKey.includes('xxxxxxxx')
 
-    if (!apiKey) {
+    // Llama 3.1 8B free снята с OpenRouter — см. актуальные :free модели на openrouter.ai
+    const model =
+      process.env.OPENROUTER_CHAT_MODEL ||
+      'meta-llama/llama-3.2-3b-instruct:free'
+
+    if (isPlaceholderKey) {
       // Fallback ответы без AI
       const lastMessage = messages[messages.length - 1]?.content?.toLowerCase() || ''
       
@@ -75,7 +84,7 @@ export async function POST(request: Request) {
         'HTTP-Referer': process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3.1-8b-instruct:free',
+        model,
         messages: [
           { role: 'system', content: systemPrompt },
           ...messages.slice(-10), // Последние 10 сообщений для контекста
