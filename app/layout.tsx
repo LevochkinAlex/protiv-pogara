@@ -8,9 +8,12 @@ import './globals.css'
 const onest = Onest({ 
   subsets: ["latin", "cyrillic"],
   variable: '--font-onest',
-});
+})
+
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://inpb.pro'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Институт НПБ - Противопожарная безопасность | Москва',
     template: '%s | Институт НПБ'
@@ -18,10 +21,28 @@ export const metadata: Metadata = {
   description: 'Институт национальной противопожарной безопасности - эксперты МЧС с 20-летним опытом. Аудит, проектирование, монтаж систем пожаротушения, обучение в Москве.',
   keywords: ['пожарная безопасность', 'аудит', 'проектирование СПС', 'огнезащита', 'МЧС', 'Москва'],
   authors: [{ name: 'Институт НПБ' }],
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
     siteName: 'Институт НПБ',
+    url: siteUrl,
+    title: 'Институт НПБ — противопожарная безопасность',
+    description: 'Институт национальной противопожарной безопасности. Аудит, проектирование СПС, обучение ПТМ, Москва.',
+    images: [
+      {
+        url: '/og.png',
+        width: 1024,
+        height: 537,
+        alt: 'Институт национальной противопожарной безопасности — inpb.pro',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Институт НПБ — противопожарная безопасность',
+    description: 'Институт национальной противопожарной безопасности. Аудит, проектирование СПС, Москва.',
+    images: ['/og.png'],
   },
 }
 
@@ -75,6 +96,14 @@ export default function RootLayout({
             gtag('config', 'G-X7KH81HKWN');
           `}
         </Script>
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(108217653,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});`}
+        </Script>
+        <noscript>
+          <div>
+            <img src="https://mc.yandex.ru/watch/108217653" style={{ position: 'absolute', left: '-9999px' }} alt="" />
+          </div>
+        </noscript>
         {children}
         <ChatbotWidget />
         <Analytics />
