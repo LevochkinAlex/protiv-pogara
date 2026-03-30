@@ -1,11 +1,5 @@
 import type { FeedbackEmailData } from '@/lib/email'
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-}
+import { escapeHtml } from '@/lib/utils'
 
 export async function sendTelegramNotification(data: FeedbackEmailData) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN

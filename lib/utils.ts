@@ -13,3 +13,12 @@ export function formatDateRu(iso: string, style: 'short' | 'long' = 'short'): st
   }
   return d.toLocaleDateString('ru-RU')
 }
+
+/** Экранирование для HTML и Telegram (HTML parse_mode). */
+export function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}

@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Check, Phone, ArrowRight } from "lucide-react"
-import { services, getServiceBySlug, getAllServiceSlugs } from "@/lib/services-data"
+import { getServiceBySlug, getAllServiceSlugs, getRelatedServices } from "@/lib/services-data"
 import { FeedbackForm } from "@/components/forms/feedback-form"
 import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 
@@ -45,10 +45,7 @@ export default async function ServicePage({ params }: PageProps) {
     notFound()
   }
 
-  // Get related services (excluding current)
-  const relatedServices = services
-    .filter(s => s.id !== service.id)
-    .slice(0, 3)
+  const relatedServices = getRelatedServices(service.id, 3)
 
   return (
     <>
@@ -170,6 +167,7 @@ export default async function ServicePage({ params }: PageProps) {
                     </p>
                   </CardHeader>
                   <CardContent>
+                    {/* FeedbackForm uses useSearchParams — нужна граница для SSG */}
                     <Suspense fallback={<div className="h-48 animate-pulse rounded-xl bg-muted" />}>
                       <FeedbackForm source={`uslugi/${service.slug}`} />
                     </Suspense>

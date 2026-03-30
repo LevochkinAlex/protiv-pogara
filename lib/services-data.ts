@@ -350,3 +350,8 @@ export function getServiceBySlug(slug: string): Service | undefined {
 export function getAllServiceSlugs(): string[] {
   return services.map(s => s.slug);
 }
+
+/** Другие услуги для карточки на странице услуги (порядок как в каталоге). */
+export function getRelatedServices(excludeId: string, limit = 3): Service[] {
+  return services.filter((s) => s.id !== excludeId).slice(0, limit);
+}

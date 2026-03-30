@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import { escapeHtml } from '@/lib/utils'
 
 export interface FeedbackEmailData {
   name: string
@@ -80,12 +81,4 @@ export async function sendFeedbackEmail(data: FeedbackEmailData): Promise<{ sent
     console.error('SMTP send error:', errMsg)
     return { sent: false, error: errMsg }
   }
-}
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
 }
