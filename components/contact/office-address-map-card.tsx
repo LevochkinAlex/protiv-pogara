@@ -12,11 +12,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-export const OFFICE_ADDRESS_LINE = "Москва, Курсовой пер., 17 стр.1, офис 13"
+export const OFFICE_ADDRESS_LINE =
+  "109052, г. Москва, проезд Автомобильный, дом 10, стр. 15, пом. 1/1"
 
-/** Центр здания 17с1: сверено с точкой Google Maps (Kursovoy Lane, 17c1) / OSM way 52434940 */
-const MAP_LON = 37.6053731
-const MAP_LAT = 55.7401749
+/** Центр здания: OSM building 10 с15, Автомобильный проезд */
+const MAP_LON = 37.7064111
+const MAP_LAT = 55.7232395
 const MAP_ZOOM = 18
 
 function yandexMapEmbedSrc() {
@@ -74,7 +75,6 @@ export function OfficeAddressMapCard() {
           <div>
             <h3 className="mb-2 font-semibold">Адрес</h3>
             <p className="text-muted-foreground">{OFFICE_ADDRESS_LINE}</p>
-            <p className="text-primary mt-2 text-sm font-medium">Показать на карте</p>
           </div>
         </div>
       </button>

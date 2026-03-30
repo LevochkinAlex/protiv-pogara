@@ -71,7 +71,7 @@ const jsonLd = {
   "logo": "https://inpb.pro/logo.png",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Курсовой пер., 17 стр.1, офис 13",
+    "streetAddress": "проезд Автомобильный, дом 10, стр. 15, пом. 1/1",
     "addressLocality": "Москва",
     "postalCode": "109052",
     "addressCountry": "RU"

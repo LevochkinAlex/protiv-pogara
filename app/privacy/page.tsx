@@ -99,7 +99,7 @@ export default function PrivacyPage() {
                   <h2 className="text-2xl font-bold text-foreground mb-4">6. Контакты оператора</h2>
                   <p className="leading-relaxed">
                     ООО «Институт НПБ»<br />
-                    Адрес: Москва, Курсовой пер., 17 стр.1, офис 13<br />
+                    Адрес: 109052, г. Москва, проезд Автомобильный, дом 10, стр. 15, пом. 1/1<br />
                     Телефон: +7 (495) 532-01-77<br />
                     Email: institut-npb@mail.ru
                   </p>

@@ -76,19 +76,19 @@ export function HeroSection() {
           
           {/* Right Content — max-width ограничивает карточки, колонка grid auto не забирает место у заголовка */}
           <div className="grid min-w-0 w-full max-w-full grid-cols-1 gap-3 lg:max-w-[21rem] lg:gap-4 xl:max-w-xl xl:grid-cols-2 xl:gap-4 2xl:max-w-2xl">
-            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
+            <div className="rounded-xl bg-background/10 p-5 shadow-[inset_0_0_0_9999px_rgb(255_255_255/0.15)] backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">600+</p>
               <p className="mt-2 text-background/80">Защищённых объектов по всей России</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
+            <div className="rounded-xl bg-background/10 p-5 shadow-[inset_0_0_0_9999px_rgb(255_255_255/0.15)] backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">20+</p>
               <p className="mt-2 text-background/80">Лет профессионального опыта</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
+            <div className="rounded-xl bg-background/10 p-5 shadow-[inset_0_0_0_9999px_rgb(255_255_255/0.15)] backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">100%</p>
               <p className="mt-2 text-background/80">Соответствие требованиям МЧС</p>
             </div>
-            <div className="rounded-xl bg-background/10 p-5 backdrop-blur xl:p-6">
+            <div className="rounded-xl bg-background/10 p-5 shadow-[inset_0_0_0_9999px_rgb(255_255_255/0.15)] backdrop-blur xl:p-6">
               <p className="text-4xl font-bold text-primary">5 млн ₽</p>
               <p className="mt-2 text-background/80">Страхование ответственности</p>
             </div>
