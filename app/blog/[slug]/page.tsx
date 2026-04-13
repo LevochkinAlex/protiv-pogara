@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import { getBlogPostBySlug, getAllBlogSlugs, getRecentPosts } from "@/lib/blog-data"
-import { formatDateRu } from "@/lib/utils"
+import { formatBlogPublishedDate } from "@/lib/utils"
 import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 
 interface PageProps {
@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
-                <span>{formatDateRu(post.publishedAt, 'long')}</span>
+                <span>{formatBlogPublishedDate(post.publishedAt, 'long')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-5 w-5" />
@@ -175,7 +175,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                           {related.title}
                         </p>
                         <p className="text-sm text-muted-foreground mt-1">
-                          {formatDateRu(related.publishedAt)}
+                          {formatBlogPublishedDate(related.publishedAt)}
                         </p>
                       </Link>
                     ))}

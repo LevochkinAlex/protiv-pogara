@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User } from "lucide-react"
 import { blogPosts } from "@/lib/blog-data"
-import { formatDateRu } from "@/lib/utils"
+import { effectivePublishedIso, formatBlogPublishedDate } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Блог — статьи о пожарной безопасности, проверках МЧС, нормативах",
@@ -19,7 +19,9 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   // Sort posts by date
   const sortedPosts = [...blogPosts].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    (a, b) =>
+      new Date(effectivePublishedIso(b.publishedAt)).getTime() -
+      new Date(effectivePublishedIso(a.publishedAt)).getTime()
   )
 
   return (
@@ -78,7 +80,7 @@ export default function BlogPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          <span>{formatDateRu(post.publishedAt)}</span>
+                          <span>{formatBlogPublishedDate(post.publishedAt)}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-4 w-4" />
