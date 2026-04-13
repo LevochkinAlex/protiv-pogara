@@ -22,9 +22,11 @@ function YandexMetrikaHitsInner() {
 
     const send = () => {
       if (typeof window === 'undefined') return
-      const ym = window.ym as ((id: number, cmd: string, ...args: unknown[]) => void) | undefined
-      if (typeof ym === 'function') {
-        ym(COUNTER_ID, 'hit', url)
+      const w = window as Window & {
+        ym?: (id: number, cmd: string, ...args: unknown[]) => void
+      }
+      if (typeof w.ym === 'function') {
+        w.ym(COUNTER_ID, 'hit', url)
       }
     }
 

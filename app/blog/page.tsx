@@ -6,8 +6,12 @@ import { HeroCoverImage } from "@/components/layout/hero-cover-image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User } from "lucide-react"
-import { blogPosts } from "@/lib/blog-data"
-import { effectivePublishedIso, formatBlogPublishedDate } from "@/lib/utils"
+import {
+  blogNewBadgeClassName,
+  getAllBlogPostsSorted,
+  getNewBlogPostIdSet,
+} from "@/lib/blog-data"
+import { formatBlogPublishedDate } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Блог — статьи о пожарной безопасности, проверках МЧС, нормативах",
@@ -17,12 +21,8 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  // Sort posts by date
-  const sortedPosts = [...blogPosts].sort(
-    (a, b) =>
-      new Date(effectivePublishedIso(b.publishedAt)).getTime() -
-      new Date(effectivePublishedIso(a.publishedAt)).getTime()
-  )
+  const sortedPosts = getAllBlogPostsSorted()
+  const newPostIds = getNewBlogPostIdSet(2)
 
   return (
     <>
@@ -62,8 +62,13 @@ export default function BlogPage() {
                 <Link key={post.id} href={`/blog/${post.slug}`} className="group">
                   <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50">
                     <CardHeader>
-                      <div className="flex items-center gap-2 mb-3">
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
                         <Badge variant="secondary">{post.category}</Badge>
+                        {newPostIds.has(post.id) ? (
+                          <Badge className={blogNewBadgeClassName} aria-label="Новая статья">
+                            New
+                          </Badge>
+                        ) : null}
                       </div>
                       <CardTitle className="text-xl group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}

@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
-import { getRecentPosts } from "@/lib/blog-data"
+import { blogNewBadgeClassName, getNewBlogPostIdSet, getRecentPosts } from "@/lib/blog-data"
 import { formatBlogPublishedDate } from "@/lib/utils"
 
 export function BlogPreviewSection() {
   const recentPosts = getRecentPosts(3)
-  
+  const newPostIds = getNewBlogPostIdSet(2)
+
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
@@ -34,8 +35,13 @@ export function BlogPreviewSection() {
             <Link key={post.id} href={`/blog/${post.slug}`} className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50">
                 <CardHeader>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
                     <Badge variant="secondary">{post.category}</Badge>
+                    {newPostIds.has(post.id) ? (
+                      <Badge className={blogNewBadgeClassName} aria-label="Новая статья">
+                        New
+                      </Badge>
+                    ) : null}
                   </div>
                   <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}

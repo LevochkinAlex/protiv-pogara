@@ -23,12 +23,13 @@ export function DeferredClientWidgets() {
 
   useEffect(() => {
     const run = () => setMountExtras(true)
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      const id = window.requestIdleCallback(run, { timeout: 2000 })
-      return () => window.cancelIdleCallback(id)
+    const w = window
+    if ('requestIdleCallback' in w && typeof w.requestIdleCallback === 'function') {
+      const id = w.requestIdleCallback(run, { timeout: 2000 })
+      return () => w.cancelIdleCallback(id)
     }
-    const t = window.setTimeout(run, 800)
-    return () => window.clearTimeout(t)
+    const t = w.setTimeout(run, 800)
+    return () => w.clearTimeout(t)
   }, [])
 
   if (!mountExtras) return null
