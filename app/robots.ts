@@ -6,6 +6,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
+        userAgent: 'PR-CY-BOT',
+        allow: '/',
+      },
+      {
         userAgent: '*',
         allow: '/',
         disallow: ['/api/'],
