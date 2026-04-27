@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Выкладывает блок SMTP (и при необходимости весь .env) на production и перезапускает сервис.
+# Только синхронизация SMTP в .env на сервере (секреты). Код сайта — через git / deploy/deploy-prod.sh.
 # Использование:
 #   DEPLOY_HOST=user@IP REMOTE_APP_ROOT=/srv/inpb bash deploy/sync-env-to-server.sh
 #

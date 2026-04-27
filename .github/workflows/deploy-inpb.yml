@@ -1,0 +1,33 @@
+# Деплой inpb.pro: после push в `main` — по SSH на сервер: только `git pull` + сборка (см. deploy/deploy-prod.sh).
+# Репозиторий → Settings → Secrets and variables → Actions:
+#   DEPLOY_HOST   — 89.23.102.48
+#   DEPLOY_USER  — root
+#   DEPLOY_SSH_KEY — приватный SSH-ключ, публичный ключ в ~/.ssh/authorized_keys на сервере
+# Пока секреты не заданы, job упадёт — настройте или отключите workflow.
+name: Deploy to inpb.pro
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-inpb
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script_stop: true
+          # Путь к клону на сервере (при смене — поправьте и здесь)
+          script: |
+            set -euo pipefail
+            cd /srv/inpb
+            bash deploy/deploy-prod.sh

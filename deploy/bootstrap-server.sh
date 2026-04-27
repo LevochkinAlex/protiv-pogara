@@ -10,6 +10,7 @@
 #      (или cp .env.example .env.local для локальной разработки)
 #      обязательно: NEXT_PUBLIC_APP_URL=https://inpb.pro, SMTP_* для заявок на email
 #   4) Сборка: bash deploy/build-standalone.sh
+#   Обновления кода: только с GitHub — bash deploy/deploy-prod.sh (см. deploy/PRODUCTION.md)
 #
 # Переменные окружения (опционально):
 #   APP_ROOT     — корень репозитория (по умолчанию каталог на уровень выше deploy/)

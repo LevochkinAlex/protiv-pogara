@@ -176,6 +176,10 @@ git push
 
 5. **Нажмите Deploy**
 
+## Деплой на VPS (inpb.pro)
+
+Код на production **только из GitHub** (`git pull` на сервере), не копирование с локального ПК. Скрипт `deploy/deploy-prod.sh`, GitHub Actions и разовая настройка — в **[deploy/PRODUCTION.md](deploy/PRODUCTION.md)**.
+
 ## Кастомизация
 
 ### Изменение услуг
