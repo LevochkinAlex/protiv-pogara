@@ -160,10 +160,24 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 border-t border-border pt-8">
+        <div className="mt-12 border-t border-border pt-8 flex flex-col gap-4 items-center md:flex-row md:justify-between md:items-center">
           <p className="text-muted-foreground text-center text-sm md:text-left">
             © {new Date().getFullYear()} ООО «Институт НПБ». Все права защищены.
           </p>
+          <a
+            href="https://pr-cy.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 opacity-90 hover:opacity-100 transition-opacity"
+            title="Рейтинг доверия и анализ сайта на PR-CY"
+          >
+            <img
+              src="https://s.pr-cy.ru/counters/inpb.pro"
+              width={88}
+              height={31}
+              alt="Анализ сайта"
+            />
+          </a>
         </div>
       </div>
     </footer>
