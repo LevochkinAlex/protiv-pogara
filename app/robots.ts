@@ -10,6 +10,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
+        userAgent: 'PR-CY.RU',
+        allow: '/',
+      },
+      {
         userAgent: '*',
         allow: '/',
         disallow: ['/api/'],

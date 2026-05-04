@@ -58,3 +58,26 @@ ssh root@SERVER 'cd /srv/inpb && bash deploy/deploy-prod.sh'
 ## Приватный репозиторий
 
 На сервере настройте `git` на работу с GitHub: [deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys) для read-only `git pull` или `https` + token в credential helper (не в репозитории).
+
+## Бот PR-CY (сканер inpb.pro)
+
+**В репозитории:** `app/robots.ts` — для `PR-CY-BOT` и `PR-CY.RU` задано `Allow: /` (и общее правило `*` не запрещает публичные страницы, только `/api/`). Публичного `public/robots.txt` нет, отдаётся сгенерированный `/robots.txt`.
+
+**Nginx** (`deploy/nginx-inpb.pro.conf`): нет фильтрации по IP или User-Agent; ботам ничего не мешает на уровне сервера.
+
+**Cloudflare** (только вручную в панели; в git не хранится): если домен проксируется через Cloudflare, челлендж/WAF могут мешать сканеру. Создайте правило **разрешения** (имя, например, `Allow PR-CY`):
+
+1. **Security** → **WAF** → **Custom rules** (в старом интерфейсе: **Security** → **WAF** → **Tools** / **Firewall rules** — смотрите актуальные пункты в вашей версии панели).
+2. **Create rule** / **Создать правило**.
+3. **Expression** (если есть редактор выражений), пример:
+
+   ```txt
+   (ip.src in {87.228.72.128/25}) or (http.user_agent contains "PR-CY")
+   ```
+
+   Если редактор другой — два условия через **OR**: источник IP в диапазоне **87.228.72.128/25** **или** HTTP User-Agent **contains** `PR-CY`.
+
+4. **Action:** **Skip** → включите пропуск для **WAF** и при необходимости «всех остальных настроек безопасности» для этого запроса; либо действие **Allow** / **Bypass**, если такой вариант есть в вашей панели (цель — не отдавать боту капчу и не блокировать по IP).
+5. Сохраните и убедитесь, что правило **выше** агрессивных правил «Block/Challenge all».
+
+Проверка: после деплоя откройте `https://inpb.pro/robots.txt` и убедитесь, что есть блоки `User-agent: PR-CY-BOT` и `User-agent: PR-CY.RU` с `Allow: /`.
