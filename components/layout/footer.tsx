@@ -159,23 +159,24 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 border-t border-border pt-8 flex flex-col gap-4 items-center md:flex-row md:justify-between md:items-center">
-          <p className="text-muted-foreground text-center text-sm md:text-left">
+        {/* Bottom: бейдж по центру под копирайтом — не справа, иначе перекрывается fixed «Онлайн-консультант» (z-50) */}
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-border pt-8">
+          <p className="text-center text-sm text-muted-foreground">
             © {new Date().getFullYear()} ООО «Институт НПБ». Все права защищены.
           </p>
           <a
             href="https://pr-cy.ru"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 opacity-90 hover:opacity-100 transition-opacity"
+            className="shrink-0 opacity-90 transition-opacity hover:opacity-100"
             title="Рейтинг доверия и анализ сайта на PR-CY"
           >
             <img
               src="https://s.pr-cy.ru/counters/inpb.pro"
               width={88}
               height={31}
-              alt="Анализ сайта"
+              alt="Анализ сайта — рейтинг PR-CY"
+              loading="lazy"
             />
           </a>
         </div>
